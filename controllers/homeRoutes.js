@@ -21,7 +21,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
     // get a single post
     try{
         const dbPostData = await Post.findByPk(req.params.id, {
-            include[{model: Comment}]
+            include: [{model: Comment}]
         });
         const postGallery = dbPostData.get({plain: true});
         res.render("single-posts", {postGallery, loggedIn: req.session.loggedIn});
@@ -43,7 +43,7 @@ router.get("/signup", (req, res) => {
         res.redirect("/");
         return
     }
-    res.render("signup"
+    res.render("signup");
 })
 
 module.exports = router;
