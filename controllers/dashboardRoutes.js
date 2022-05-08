@@ -1,9 +1,14 @@
 const router = require("express").Router();
-const { Post } = require("../models");
+const { Post, User } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, async (req, res) => {
     // we want to go ahead and finishing the routing to get all the posts
+    try{
+        const dbUserPosts = await Post.findAll();
+        const postsDashboard = dbUserPosts.map((posts)=> posts.get({plain:true}));
+        res.render("posts", postsDashboard)
+    }catch(err) {res.status(500).json(err)}
 });
 
 router.get("/new", withAuth, (req, res) => {

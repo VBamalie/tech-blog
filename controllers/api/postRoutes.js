@@ -1,15 +1,15 @@
 const router = require("express").Router();
-const withAuth = require("../../utils");
+// const withAuth = require("../../utils");
 
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
     // Create a post
 });
 
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/:id", async (req, res) => {
     // Update a post
 });
 
-router.delete("/:id", withAuth, async (req, res) => {
+router.delete("/:id", async (req, res) => {
     // Delete the post
 });
 
